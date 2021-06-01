@@ -5,7 +5,9 @@ yarn start
 # MobX 介绍
 
 MobX6 默认基于 proxy
+
 文档 https://mobx.js.org/README.html
+
 中文文档 https://zh.mobx.js.org/README.html
 
 请认真读已经翻译的中文文档。
