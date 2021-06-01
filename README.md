@@ -51,7 +51,9 @@ MobX6 默认基于 proxy
 `makeAutoObservable` 会给方法自动加上 `@action`，多次赋值合并成一次 render。
 
 6 **react 之外**
+
 Mobx 架构自由，你可以在任意地方管理 store。
+
 
 # 使用
 
