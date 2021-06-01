@@ -26,10 +26,8 @@ class TodoStore {
     // 以下代码做了几件事
     // 1 使 search data 可观察
     // 2 含有 get 会是用 computed 标记。类似 reselect
-    // 3 autoAction
-    // 3.1 函数自动 bindAction，减少 render 次数
-    // 3.2 函数自动 action.bound，bind this
-    makeAutoObservable(this, null, { autoAction: true })
+    // 3 会对函数使用 autoBind。
+    makeAutoObservable(this, null, { autoBind: true })
   }
 
   // 衍生数据使用 get。 依赖的 search data 有变化，此函数才会运行

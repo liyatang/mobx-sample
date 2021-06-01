@@ -1,38 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
-import { autorun, configure } from 'mobx'
+import { autorun } from 'mobx';
 import todoStore from './store';
 
-// 这份配置应该放在项目的入口文件了。放这里方便看
-configure({
-  // 强制只能在被 action 包裹的方法里改变数据，否则会报错。
-  // 这样数据的变化可控，都收归到 store 里。
-  enforceActions: 'always',
-
-  // 默认使用 proxy。 我们兼容性佳，所以不用管。
-  // useProxies: "never"
-})
-
 // 你可以在 react 之外使用
-// 比如操作数据
+// 比如操作数据，
 setTimeout(() => {
-todoStore.add('add outside of react')
-}, 1000)
-
-// 你可以在 react 之外使用。
+  todoStore.add('add outside of react');
+}, 1000);
 // 比如监听数据变化，只要使用的数据变化就会运行
 autorun(() => {
-  console.log(todoStore.data.slice())
-})
+  console.log(todoStore.data.slice());
+});
 
 // 组件拆的越细，性能越好
 const TodoAdd = observer(() => {
   const [text, setText] = useState('');
 
   useEffect(() => {
-    todoStore.fetchData()
+    todoStore.fetchData();
   }, []);
-
 
   const handleAdd = () => {
     todoStore.add(text);
