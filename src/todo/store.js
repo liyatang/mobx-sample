@@ -10,7 +10,7 @@ function fetchFakeData(){
         text: 'mobx-react',
         value: 2
       }])
-    }, 1000)
+    }, 500)
   })
 }
 

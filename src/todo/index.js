@@ -15,12 +15,14 @@ configure({
 
 // 你可以在 react 之外使用
 // 比如操作数据
+setTimeout(() => {
 todoStore.add('add outside of react')
+}, 1000)
 
 // 你可以在 react 之外使用。
 // 比如监听数据变化，只要使用的数据变化就会运行
 autorun(() => {
-  console.log(todoStore.data)
+  console.log(todoStore.data.slice())
 })
 
 // 组件拆的越细，性能越好
@@ -84,7 +86,7 @@ const Todo = observer(() => {
           return (
             <div key={index}>
               {item.text}
-              <span style={{ padding: '10px', color: 'red' }} onClick={handleRemove}>X</span>
+              <span style={{ padding: '10px', color: 'red' }} onClick={() => handleRemove(index)}>X</span>
             </div>
           );
         })}
