@@ -4,12 +4,11 @@ import { autorun, runInAction } from 'mobx';
 import todoStore from './store';
 
 // 你可以在 react 之外使用
-// 比如操作数据
-// 实际上这回报错，因为
+// 比如操作数据。（实际上这会报错，因为需要再 action 内操作数据。）
 setTimeout(() => {
   todoStore.add('add outside of react');
 }, 1000);
-// 比如监听数据变化，只要使用的数据变化就会运行
+// 比如监听数据变化，只要使用的数据有变化就会运行
 autorun(() => {
   console.log(todoStore.data.slice());
 });
