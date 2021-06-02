@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable, runInAction } from 'mobx';
 
 function fetchFakeData(){
   return new Promise(resolve => {
@@ -51,7 +51,10 @@ class TodoStore {
   // 异步也是没问题的哦
   async fetchData(){
     const data = await fetchFakeData()
-    this.data = data
+    // 对于 async await，下面代码是异步的。需要包在 action 内
+    runInAction(() => {
+      this.data = data
+    })
   }
 
   setSearch(value){

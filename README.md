@@ -6,8 +6,6 @@ yarn start
 
 怎么读？"mo(一声) ba(一声) X"，我更喜欢拆开读 M O B X
 
-
-
 [文档](https://mobx.js.org/README.html) [中文文档](https://zh.mobx.js.org/README.html) 
 
 MobX6 较 MobX4&5 在使用上已经简化很多了。网上很多mobx4&5的文档旧用法，不要看，不要看，不要看。
@@ -37,7 +35,7 @@ MobX6 较 MobX4&5 在使用上已经简化很多了。网上很多mobx4&5的文�
 2 **收拢数据操作**
 
 组件直接引入 store 即可直接操作数据。
-同时 store 纯粹的 js，哪里都可以改变 store。为了提高代码健壮性，我们约定只在 store 里操作数据。配置即可 `configure({enforceActions: 'always'})`
+同时 store 纯粹的 js，哪里都可以改变 store。
 
 3 **衍生数据**
 
@@ -65,6 +63,12 @@ Mobx 架构自由，你可以在任意地方管理 store。
 
 可参考 /src/count 的代码。
 
-# todo 加深印象
+# todo 加深理解
+
+observer 怎么收集依赖？
+
+store 用类定义？ 
+
+store 类可继承其他类么？
 
 # todo debug

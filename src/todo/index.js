@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { observer } from 'mobx-react';
-import { autorun } from 'mobx';
+import { autorun, runInAction } from 'mobx';
 import todoStore from './store';
 
 // 你可以在 react 之外使用
-// 比如操作数据，
+// 比如操作数据
+// 实际上这回报错，因为
 setTimeout(() => {
   todoStore.add('add outside of react');
 }, 1000);
@@ -22,6 +23,9 @@ const TodoAdd = observer(() => {
   }, []);
 
   const handleAdd = () => {
+    runInAction(() => {
+      todoStore.data = [];
+    });
     todoStore.add(text);
     setText('');
   };
@@ -50,7 +54,6 @@ const TodoSearch = observer(() => {
 
 // observer 使组件响应 todoStore 的变化
 const Todo = observer(() => {
-
   const handleRemove = (index) => {
     todoStore.remove(index);
   };
@@ -67,7 +70,6 @@ const Todo = observer(() => {
       <TodoAdd/>
       <TodoSearch/>
       <div>
-        <div>梳理：</div>
         {/* 直接使用 todoStore */}
         {todoStore.filterData.map((item, index) => {
           return (
