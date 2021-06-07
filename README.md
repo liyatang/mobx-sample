@@ -17,7 +17,7 @@ MobX6 较 MobX4&5 在使用上已经简化很多了。网上很多mobx4&5的文�
 - 架构自由。低耦合。
 
 补充
-- 低成本入门。
+- 低低低成本入门。
 - 基于 proxy。
 - UI、数据独立，各司其职，简单清晰。
 - 只能在 store 改变数据。否则报错。
@@ -27,18 +27,18 @@ MobX6 较 MobX4&5 在使用上已经简化很多了。网上很多mobx4&5的文�
 
 1 **定义**
 
-定义组件 todo/index.js，使用 observer 响应数据变化，直接使用 todoStore 即可，observer 会自动收集需要响应那些数据变化。
+定义组件 todo/index.js，使用 observer 包裹组件，响应数据变化。直接使用 todoStore 即可，observer 会自动收集需要响应那些数据变化。
 定义 store todo/store.js，使用 makeAutoObservable 使 store 的数据可观察.
 
 2 **收拢数据操作**
 
 组件直接引入 store 即可直接操作数据。
-同时 store 是纯粹的 js，哪里都可以改变 store，MobX 默认只能在 action 内改变数据，可以理解为 store 内改变数据，更利于维护。
+同时 store 是纯粹的 js，哪里都可以改变 store，为了更利于维护，MobX 默认只能在 action 内改变数据（可以理解为 store 内改变数据）。
 
 3 **衍生数据**
 
 例子中搜索的数据不用特地维护一个新字段来存放，因为可以通过 search 和 data 衍生出来，使用 `get` er。
-`makeAutoObservable` 会对 `get` er 使用 `computed`，类似 reselect，只有用到的值变化的时候 computed 值才会变化。
+`makeAutoObservable` 会对 `get` er 自动使用 `computed`，类似 reselect，只有用到的值变化的时候 computed 值才会变化。
 
 4 **异步**
 
@@ -61,6 +61,8 @@ Mobx 架构自由，你可以在任意地方管理 store，可以任意搭配其
 - runInAction() 包裹下要修改数据的异步方法
 
 # 加深理解
+
+什么时候用 MobX，什么时候用 state？
 
 observer 怎么收集依赖？
 
